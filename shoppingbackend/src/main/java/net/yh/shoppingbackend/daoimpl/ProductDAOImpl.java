@@ -77,14 +77,14 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public List<Product> listAllActiveProds() {
-		String selectActiveProducts = "SELECT FROM Product WHERE active = :active";
+		String selectActiveProducts = "FROM Product WHERE active = :active";
 		
 		return sessionFactory.getCurrentSession().createQuery(selectActiveProducts).setParameter("active",true).list() ;
 	}
 
 	@Override
 	public List<Product> listAllActiveProdsByCat(int categoryId) {
-	String selectActiveProductsByCat = "SELECT FROM Product WHERE active = :active AND category_id = :categoryId";
+	String selectActiveProductsByCat = "FROM Product WHERE active = :active AND category_id = :categoryId";
 		
 		return sessionFactory.getCurrentSession()
 				.createQuery(selectActiveProductsByCat)
@@ -96,7 +96,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getLatestActiveProds(int count) {
 		return sessionFactory.getCurrentSession()
-				.createQuery("SELECT FROM Product WHERE active = :active ORDER BY id")
+				.createQuery("FROM Product WHERE active = :active ORDER BY id")
 				    .setParameter("active",true).setFirstResult(0)
 				    .setMaxResults(count)
 				       .list() ;

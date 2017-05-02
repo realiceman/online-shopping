@@ -26,18 +26,36 @@ public class ProductTestCase {
 		
 	}
 
+//	@Test
+//	public void testCRUDProduct() {
+//		product = new Product();
+//		product.setName("oneProd2");
+//		product.setBrand("youssBrand2");
+//		product.setDescription("une description...");
+//		product.setUnitPrice(200);
+//		product.setActive(true);
+//		product.setCategory_id(3);
+//		product.setSupplierId(3);
+//		
+//		assertEquals("ok",true, productDAO.add(product));
+//	}
+	
+	
+//	@Test
+//	public void readUpdateCRUDProduct(){
+//		product = productDAO.get(3);
+//		product.setName("Google Pix");
+//		assertEquals("ok",true, productDAO.update(product));
+//	}
+	
+//	@Test
+//	public void testListActiveProducts(){
+//		assertEquals("ookkk",7,productDAO.listAllActiveProds().size());
+//	}
+	
 	@Test
-	public void testCRUDProduct() {
-		product = new Product();
-		product.setName("oneProd2");
-		product.setBrand("youssBrand2");
-		product.setDescription("une description...");
-		product.setUnitPrice(200);
-		product.setActive(true);
-		product.setCategory_id(3);
-		product.setSupplierId(3);
-		
-		assertEquals("ok",true, productDAO.add(product));
+	public void testGetLatestActivePdts(){
+		assertEquals("ok",3, productDAO.getLatestActiveProds(3).size());
 	}
 
 }
