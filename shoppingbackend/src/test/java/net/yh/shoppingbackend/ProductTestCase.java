@@ -39,7 +39,10 @@ public class ProductTestCase {
 //		
 //		assertEquals("ok",true, productDAO.add(product));
 //	}
-	
+	@Test
+	public void testprodsByCat(){
+		
+	}
 	
 //	@Test
 //	public void readUpdateCRUDProduct(){

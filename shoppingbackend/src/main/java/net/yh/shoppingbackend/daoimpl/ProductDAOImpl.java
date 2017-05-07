@@ -89,7 +89,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return sessionFactory.getCurrentSession()
 				.createQuery(selectActiveProductsByCat)
 				    .setParameter("active",true)
-				        .setParameter("category_id",categoryId).list() ;
+				        .setParameter("categoryId",categoryId).list() ;
 	
 	}
 

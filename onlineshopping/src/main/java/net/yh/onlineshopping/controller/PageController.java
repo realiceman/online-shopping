@@ -81,8 +81,7 @@ public class PageController {
 	public ModelAndView showCatProducts(@PathVariable("id") int id){
 		ModelAndView mv = new ModelAndView("page");
 		//cat dao to fetch a single cat
-		Category category = null;
-		category= categorydao.get(id);
+		Category category = ((Category) categorydao.get(id));
 		mv.addObject("title", category.getName());
 		mv.addObject("categories", categorydao.list());
 		//we pass the single cat in an object
