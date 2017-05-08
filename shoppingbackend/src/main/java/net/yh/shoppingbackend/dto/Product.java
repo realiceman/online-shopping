@@ -19,19 +19,13 @@ public class Product implements Serializable {
 	private int id;
 	private String code;
 	private String name;
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
 	private String brand;
+
+
 	@JsonIgnore
 	private String description;
+
+
 	@Column(name="unit_price")
 	private double unitPrice;
 	private int quantity;
@@ -46,20 +40,16 @@ public class Product implements Serializable {
 	private int supplierId;
 	private int purchases;
 	private int views;
-	
-	
 	public Product() {
 		this.code = UUID.randomUUID().toString().substring(26).toUpperCase();
 	}
-
-
-	public int getId() {
-		return id;
+	public String getBrand() {
+		return brand;
 	}
-
-
-	public void setId(int id) {
-		this.id = id;
+	
+	
+	public int getCategory_id() {
+		return category_id;
 	}
 
 
@@ -68,38 +58,23 @@ public class Product implements Serializable {
 	}
 
 
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-
-	public String getBrand() {
-		return brand;
-	}
-
-
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
-
 	public String getDescription() {
 		return description;
 	}
 
 
-	public void setDescription(String description) {
-		this.description = description;
+	public int getId() {
+		return id;
 	}
 
 
-	public double getUnitPrice() {
-		return unitPrice;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
+	public int getPurchases() {
+		return purchases;
 	}
 
 
@@ -108,8 +83,18 @@ public class Product implements Serializable {
 	}
 
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public int getSupplierId() {
+		return supplierId;
+	}
+
+
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+
+
+	public int getViews() {
+		return views;
 	}
 
 
@@ -123,8 +108,8 @@ public class Product implements Serializable {
 	}
 
 
-	public int getCategory_id() {
-		return category_id;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
 
@@ -133,18 +118,23 @@ public class Product implements Serializable {
 	}
 
 
-	public int getSupplierId() {
-		return supplierId;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 
-	public void setSupplierId(int supplierId) {
-		this.supplierId = supplierId;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 
-	public int getPurchases() {
-		return purchases;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
@@ -153,8 +143,18 @@ public class Product implements Serializable {
 	}
 
 
-	public int getViews() {
-		return views;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+	public void setSupplierId(int supplierId) {
+		this.supplierId = supplierId;
+	}
+
+
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
 

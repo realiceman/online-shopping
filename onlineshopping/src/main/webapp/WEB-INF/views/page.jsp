@@ -74,11 +74,20 @@
 				<%@include file="contact.jsp"%>
 			</c:if>
 			
-			<!-- loading when user clicks contact -->
+			<!-- loading when user all product -->
 			<c:if test="${userclickAllProducts == true or userclickCategoryProducts == true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
+		
+		    <!-- loading when user clicks show product -->
+			<c:if test="${userclickShowProduct == true }">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+		    
 		</div>
+		
+		
+		
 		<!-- footer -->
 		<%@include file="./shared/footer.jsp"%>
 		<!-- /.container -->

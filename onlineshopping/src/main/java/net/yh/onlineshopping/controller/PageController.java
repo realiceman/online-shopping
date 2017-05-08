@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.yh.shoppingbackend.dao.CategoryDAO;
+import net.yh.shoppingbackend.dao.ProductDAO;
 import net.yh.shoppingbackend.dto.Category;
+import net.yh.shoppingbackend.dto.Product;
 
 @Controller
 public class PageController {
 	
 	@Autowired
 	private CategoryDAO categorydao;
+	@Autowired
+	private ProductDAO productdao;
 	
 	
 	@RequestMapping(value={"/","/home","/index"})
@@ -87,6 +91,22 @@ public class PageController {
 		//we pass the single cat in an object
 		mv.addObject("category", category);
 		mv.addObject("userclickCategoryProducts", true);
+		return mv;
+	}
+	
+	
+	/* virw single product */ 
+	@RequestMapping(value="/show/{id}/product")
+	public ModelAndView showSingleProduct(@PathVariable("id") int id){
+		ModelAndView mv = new ModelAndView("page");
+		Product product = productdao.get(id);
+		//views count
+		product.setViews(product.getViews()+1);
+		productdao.update(product);
+		//end view count
+		mv.addObject("title", product.getName());
+		mv.addObject("product", product);
+		mv.addObject("userclickShowProduct", true);
 		return mv;
 	}
 
