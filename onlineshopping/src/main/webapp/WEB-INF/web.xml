@@ -10,6 +10,11 @@
 <servlet>
   <servlet-name>dispatcher</servlet-name>
   <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+   <!-- exception handler => parameter of dispatcher-->
+   <init-param>
+      <param-name>throwExceptionIfNoHandlerFound</param-name>
+      <param-value>true</param-value>
+   </init-param>
 </servlet>
 
 <servlet-mapping>
@@ -17,4 +22,13 @@
    <url-pattern>/</url-pattern>
 </servlet-mapping>
 
+<context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.xml</param-value>
+    </context-param>
+    
+    <listener>
+      <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+  
 </web-app>
