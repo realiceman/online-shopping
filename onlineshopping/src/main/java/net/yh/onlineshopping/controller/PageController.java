@@ -33,7 +33,7 @@ public static  Logger logger = LogManager.getLogger(PageController.class);
 	
 	@RequestMapping(value={"/","/home","/index"})
 	public ModelAndView index(){
-		PropertyConfigurator.configure("log4j.properties");
+		//PropertyConfigurator.configure("log4j.properties");
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "youss shop");
         logger.info("message depuis index");
