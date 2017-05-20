@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
@@ -13,6 +14,7 @@
 <html lang="en">
 
 <head>
+
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +29,9 @@
 	window.contextRoot = '${contextRoot}';
 </script>
 
+<!-- Custom CSS -->
+<link href="${css }/myapp.css" rel="stylesheet">
+
 <!-- Bootstrap Core CSS -->
 <link href="${css }/bootstrap.min.css" rel="stylesheet">
 
@@ -36,8 +41,7 @@
 <!-- Bootstrap datatable -->
 <link href="${css }/dataTables.bootstrap.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="${css }/myapp.css" rel="stylesheet">
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,6 +86,11 @@
 		    <!-- loading when user clicks show product -->
 			<c:if test="${userclickShowProduct == true }">
 				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
+			<!-- loading when user clicks manage products -->
+			<c:if test="${userClickManageProducts == true }">
+				<%@include file="manageProducts.jsp"%>
 			</c:if>
 		    
 		</div>
