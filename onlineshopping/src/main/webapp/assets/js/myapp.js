@@ -100,4 +100,14 @@ $(function(){
 			
 		});
 	}
+	
+	//dismissing the alert after 3 seconds
+	var $alert = $('.alert');
+      /* if true it means it's available */
+	if($alert.length){
+		setTimeout(function(){
+			$alert.fadeOut('slow');
+		},3000);
+	}
 });
+

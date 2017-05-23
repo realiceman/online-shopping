@@ -2,14 +2,24 @@ package net.yh.onlineshopping.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.yh.onlineshopping.utils.FileUploadUtility;
 import net.yh.shoppingbackend.dao.CategoryDAO;
+import net.yh.shoppingbackend.dao.ProductDAO;
 import net.yh.shoppingbackend.dto.Category;
 import net.yh.shoppingbackend.dto.Product;
 
@@ -20,8 +30,14 @@ public class ManagementController {
 	@Autowired
 	private CategoryDAO categorydao;
 	
+	@Autowired
+	private ProductDAO productdao;
+	
+	public static  Logger logger = LogManager.getLogger(ManagementController.class);
+	
 	@RequestMapping(value="/products", method=RequestMethod.GET)
-    public ModelAndView showManageProducts(){
+    public ModelAndView showManageProducts(@RequestParam(name="operation", required=false)String operation){
+	
 		ModelAndView mv = new ModelAndView("page");
 	    mv.addObject("userClickManageProducts", true);
 	    mv.addObject("title", "Manage Products");
@@ -30,8 +46,36 @@ public class ManagementController {
 	    nProduct.setActive(true);
 	    mv.addObject("product", nProduct);
 	    
+	    if(operation!=null){
+	    	if(operation.equals("product")){
+	    		mv.addObject("message", "Product submitted succesfully!");
+	    	}
+	    }
+	    
 	    return mv;
 	
+	}
+	
+	//handling manager product submission
+	@RequestMapping(value="/products", method=RequestMethod.POST)
+	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, 
+			          BindingResult results, Model model, HttpServletRequest request){
+		//check error(s)
+		if(results.hasErrors()){
+			model.addAttribute("userClickManageProducts", true);
+			model.addAttribute("title", "Manage Products");
+			model.addAttribute("message", "Validation failed for product submission");
+			return "page";
+		}
+		
+		logger.info(mProduct.toString());
+		productdao.add(mProduct);
+		
+		if(!mProduct.getFile().getOriginalFilename().equals("")){
+			FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
+		}
+		
+		return "redirect:/manage/products?operation=product";
 	}
 	
 	
