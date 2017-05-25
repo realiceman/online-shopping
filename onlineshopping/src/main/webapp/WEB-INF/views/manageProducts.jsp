@@ -1,3 +1,4 @@
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <div class="container">
 
     <div class="row">
@@ -70,6 +71,7 @@
                        <label class="control-label col-md-4" for="file">Select an image:</label>
                        <div class="col-md-8">
                           <sf:input style="width:80%" type="file" path="file" id="file" class="form-control" /> 
+                          <sf:errors path="file" style="color:red;" cssClass="help-block" element="em" />
                        </div>
                     </div>
                     
@@ -107,5 +109,46 @@
     
     </div>
 
-
+<div class="row">
+			    <div class="col-xs-12">
+			       <h3>Available Products</h3>
+			       <hr/>
+			    </div>
+			    
+			    <div class="col-xs-12">
+			        <div style="overflow:auto">
+			        
+			        <table id="adminProductsTable" class="table table-striped table-bordered">
+			            <thead>
+			               <tr>
+			                  <th>Id</th>
+			                  <th>Code</th>
+			                  <th>Name</th>
+			                  <th>Brand</th>
+			                  <th>Price</th>
+			                  <th>Quantity</th>
+			                  <th>Active</th>
+			                  <th>Edit</th>
+			               </tr>
+			            </thead>
+			        
+			            
+			            <tfoot>
+			               <tr>
+			                  <th>Id</th>
+			                  <th>Code</th>
+			                  <th>Name</th>
+			                  <th>Brand</th>
+			                  <th>Price</th>
+			                  <th>Quantity</th>
+			                  <th>Active</th>
+			                  <th>Edit</th>
+			               </tr>
+			            </tfoot>
+			       </table>
+			        
+			        </div>
+			    </div>
+			    
+			</div>
 </div>

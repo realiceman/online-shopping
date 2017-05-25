@@ -12,12 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.yh.onlineshopping.utils.FileUploadUtility;
+import net.yh.onlineshopping.validator.ProductValidator;
 import net.yh.shoppingbackend.dao.CategoryDAO;
 import net.yh.shoppingbackend.dao.ProductDAO;
 import net.yh.shoppingbackend.dto.Category;
@@ -60,6 +63,9 @@ public class ManagementController {
 	@RequestMapping(value="/products", method=RequestMethod.POST)
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, 
 			          BindingResult results, Model model, HttpServletRequest request){
+		
+		new ProductValidator().validate(mProduct, results);
+		
 		//check error(s)
 		if(results.hasErrors()){
 			model.addAttribute("userClickManageProducts", true);
@@ -77,6 +83,23 @@ public class ManagementController {
 		
 		return "redirect:/manage/products?operation=product";
 	}
+	
+	
+
+	
+	@RequestMapping(value="/product/{id}/activation", method=RequestMethod.POST)
+	@ResponseBody
+	public String handleProductActivation(@PathVariable int id){
+		Product product = productdao.get(id);
+		boolean isActive = product.isActive();
+		product.setActive(!isActive);
+		productdao.update(product);
+		return (isActive)?
+				"You have successfully deactivated the product with the id "+product.getId()
+				:"You have successfully activated the product with the id "+product.getId();
+	}
+	
+	
 	
 	
 	@ModelAttribute("categories")

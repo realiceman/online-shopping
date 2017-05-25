@@ -38,10 +38,10 @@ public class Product implements Serializable {
 	private double unitPrice;
 	private int quantity;
 	@Column(name="is_active")
-	@JsonIgnore
+	//@JsonIgnore
 	private boolean active;
 	@Column(name="category_id")
-	@JsonIgnore
+	//@JsonIgnore
 	private int category_id;
 	@Column(name="supplier_id")
 	@JsonIgnore

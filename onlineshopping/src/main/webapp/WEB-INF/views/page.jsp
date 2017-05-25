@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+
 
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
@@ -31,6 +31,7 @@
 
 <!-- Custom CSS -->
 <link href="${css }/myapp.css" rel="stylesheet">
+<link href="${css }/toggle.css" rel="stylesheet">
 
 <!-- Bootstrap Core CSS -->
 <link href="${css }/bootstrap.min.css" rel="stylesheet">
@@ -113,6 +114,8 @@
         <!-- datatable bootstrap -->
 		<script src="${js}/dataTables.bootstrap.js"></script>
 
+        <!-- Bootbox -->
+		<script src="${js}/bootbox.min.js"></script>
 
 		<!-- self coded js for menu -->
 		<script src="${js}/myapp.js"></script>
