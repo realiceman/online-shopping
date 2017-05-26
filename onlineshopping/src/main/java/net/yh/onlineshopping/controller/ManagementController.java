@@ -59,13 +59,35 @@ public class ManagementController {
 	
 	}
 	
+	
+	@RequestMapping(value="/{id}/product", method=RequestMethod.GET)
+	 public ModelAndView showEditProducts(@PathVariable int id){
+		
+		ModelAndView mv = new ModelAndView("page");
+	    mv.addObject("userClickManageProducts", true);
+	    mv.addObject("title", "Manage Products");
+	    //fetch the product from the db
+	    Product nProduct = productdao.get(id);
+	    mv.addObject("product", nProduct);
+	    
+	    return mv;
+	
+	}
+	
+	
+	
 	//handling manager product submission
 	@RequestMapping(value="/products", method=RequestMethod.POST)
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, 
-			          BindingResult results, Model model, HttpServletRequest request){
-		
-		new ProductValidator().validate(mProduct, results);
-		
+			          BindingResult results, Model model, HttpServletRequest request){		
+		//handle image validation for new products
+		if(mProduct.getId()==0){ //if id is 0 so it's a new product (no hidden id sent from form after clicking to pencil) so we have to validate anyway the file
+		  new ProductValidator().validate(mProduct, results);
+		}else{ //else the id exists so it's an update=>1) we keep the file from product object and keep blank the name; 2) name is not blank so we need to validate again
+			if(!mProduct.getFile().getOriginalFilename().equals("")){
+				new ProductValidator().validate(mProduct, results);
+			}
+		}
 		//check error(s)
 		if(results.hasErrors()){
 			model.addAttribute("userClickManageProducts", true);
@@ -75,8 +97,11 @@ public class ManagementController {
 		}
 		
 		logger.info(mProduct.toString());
-		productdao.add(mProduct);
-		
+		if(mProduct.getId()==0){  //if id is 0 so it's a new product (no hidden id sent from form after clicking to pencil) so added to db
+		    productdao.add(mProduct);
+		}else{                    //else we put the new info of the existing product 
+			productdao.update(mProduct);
+		}
 		if(!mProduct.getFile().getOriginalFilename().equals("")){
 			FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
 		}
