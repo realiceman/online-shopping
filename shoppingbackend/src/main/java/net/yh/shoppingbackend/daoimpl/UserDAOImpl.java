@@ -1,5 +1,7 @@
 package net.yh.shoppingbackend.daoimpl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -71,6 +73,32 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public Address getBillingAddress(User user) {
+		String selectQuery = "FROM Address WHERE user = :user AND billing = :billing";
+		try {
+			return (Address) sessionFactory.getCurrentSession()
+					.createQuery(selectQuery).setParameter("user", user).setParameter("billing", true)
+					.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Address> listShippingAddresses(User user) {
+		String selectQuery = "FROM Address WHERE user = :user AND shipping = :shipping";
+		try {
+			return  sessionFactory.getCurrentSession()
+					.createQuery(selectQuery).setParameter("user", user).setParameter("shipping", true)
+					.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

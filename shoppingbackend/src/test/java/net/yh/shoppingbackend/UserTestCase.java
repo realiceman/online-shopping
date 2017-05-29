@@ -114,7 +114,7 @@ public class UserTestCase {
 	}*/
 	
 	
-	@Test
+/*	@Test
 	public void testUpdateCart(){
 		//fetch user by email
 		user = userdao.getByEmail("yh2@gmx.com");
@@ -124,6 +124,90 @@ public class UserTestCase {
 		cart.setGrandTotal(5555);
 		cart.setCartLines(2);
 		assertEquals("failed to update the cart", true, userdao.updateCart(cart));
+	}*/
+	
+	
+	/*@Test
+	public void testAddAddress(){
+		// add user
+		user = new User();
+		user.setFirstName("roxane");
+		user.setLastName("harkati");
+		user.setEmail("rh@gmx.com");
+		user.setContactNumber("0665457898");
+		user.setRole("USER");
+		user.setPassword("123456");
+		
+		assertEquals("failed to add user!", true, userdao.addUser(user));
+		
+		
+		//add address
+		address = new Address();
+		address.setAddressLineOne("30 rue de Booking");
+		address.setAddressLineTwo("appartment 1");
+		address.setCity("tourcoing");
+		address.setState("hauts de france");
+		address.setCountry("France");
+		address.setPostalCode("59200");
+		address.setBilling(true);
+		
+		
+		// add user to address
+		address.setUser(user);
+		
+		assertEquals("failed to add billing address!", true, userdao.addAddress(address));
+		
+		//add the shipping address
+		address = new Address();
+		address.setAddressLineOne("28 rue de Booking");
+		address.setAddressLineTwo("next to kebab");
+		address.setCity("tourcoing");
+		address.setState("hauts de france");
+		address.setCountry("France");
+		address.setPostalCode("59200");
+		address.setShipping(true);
+		
+		// add user to address
+				address.setUser(user);
+				
+				assertEquals("failed to add shipping address!", true, userdao.addAddress(address));
+				
+	}*/
+	
+	
+	/*@Test
+	public void testAddAddress(){
+		      
+		       user = userdao.getByEmail("rh@gmx.com");
+		
+		//add the shipping address
+				address = new Address();
+				address.setAddressLineOne("28 rue de Booking");
+				address.setAddressLineTwo("next to sephora");
+				address.setCity("lille");
+				address.setState("hauts de france");
+				address.setCountry("France");
+				address.setPostalCode("59000");
+				address.setShipping(true);
+				
+				// add user to address
+				address.setUser(user);
+						
+				assertEquals("failed to add shipping address!", true, userdao.addAddress(address));
+						
+	}*/
+	
+	
+	@Test
+	public void testListAdresses(){
+		user = userdao.getByEmail("rh@gmx.com");
+		
+		assertEquals("failed to fetch shipping addresses / size does not match", 2,
+				userdao.listShippingAddresses(user).size());
+		
+		assertEquals("failed to fetch billing addresses / size does not match", "tourcoing",
+				userdao.getBillingAddress(user).getCity());
 	}
+	
 	
 }
