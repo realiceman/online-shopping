@@ -94,7 +94,7 @@
                     
                     <div class="form-group">
                        <div class="col-md-offset-4 col-md-8">
-                          <input type="submit" name="submit" id="submit" value="Submit" class="btnbtn-primary"/>   
+                          <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary"/>   
                          <!-- hidden fields for products -->
                           <sf:hidden path="id" />
                           <sf:hidden path="code" />
