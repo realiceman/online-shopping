@@ -58,6 +58,7 @@
 	    send flow requests to the FlowHandlerAdapter -->
 	 <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 	  <property name="flowRegistry" ref="flowRegistry" />
+	  <property name="order" value="-1" /><!-- ex: /register in flows and controller=> will give preference to flow  -->
 	</bean>
 	
 	<!-- for resolving views for web flow we will add this bean to point to the 
