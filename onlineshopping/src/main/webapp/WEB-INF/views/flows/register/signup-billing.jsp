@@ -25,6 +25,7 @@
                        <label class="control-label col-md-4" for="addressLineOne" >Address line on</label>
                        <div class="col-md-8">
                           <sf:input  type="text" path="addressLineOne" class="form-control"  placeholder="Enter address line one" /> 
+                            <sf:errors style="color:red;" path="addressLineOne" cssClass="help-block" element="em" />
                        </div>
                     </div>
                   
@@ -32,20 +33,31 @@
                        <label class="control-label col-md-4" >Address line two</label>
                        <div class="col-md-8">
                           <sf:input  type="text" path="addressLineTwo" class="form-control"  placeholder="Enter address line two" /> 
-                       </div>
+                            <sf:errors style="color:red;" path="addressLineTwo" cssClass="help-block" element="em" />
+                      </div>
                     </div>
                     
                     <div class="form-group">
                        <label class="control-label col-md-4" >City</label>
                        <div class="col-md-8">
                           <sf:input  type="text" path="city" class="form-control"  placeholder="Enter city name" /> 
-                       </div>
+                        <sf:errors style="color:red;" path="city" cssClass="help-block" element="em" />
+                      </div>
                     </div>
                     
                     <div class="form-group">
                        <label class="control-label col-md-4" >Postal code</label>
                        <div class="col-md-8">
                           <sf:input  type="text" path="postalCode" class="form-control"  placeholder="Enter postal code"  /> 
+                         <sf:errors style="color:red;" path="postalCode" cssClass="help-block" element="em" />
+                      </div>
+                    </div>
+                    
+                     <div class="form-group">
+                       <label class="control-label col-md-4" >State</label>
+                       <div class="col-md-8">
+                          <sf:input  type="text" path="state" class="form-control"  placeholder="Enter state name"  /> 
+                        <sf:errors style="color:red;" path="state" cssClass="help-block" element="em" />
                        </div>
                     </div>
                     
@@ -53,7 +65,8 @@
                        <label class="control-label col-md-4" >Country</label>
                        <div class="col-md-8">
                           <sf:input  type="text" path="country" class="form-control"  placeholder="Enter country name" /> 
-                       </div>
+                         <sf:errors style="color:red;" path="country" cssClass="help-block" element="em" />
+                      </div>
                     </div>
                     
                     
