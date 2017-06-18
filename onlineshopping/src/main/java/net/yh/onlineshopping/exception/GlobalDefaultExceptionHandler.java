@@ -15,7 +15,7 @@ public class GlobalDefaultExceptionHandler {
 	public ModelAndView handlerNoFoundException(){
 		ModelAndView mv = new ModelAndView("error");
 		mv.addObject("errorTitle", "The page is not constructed ! ");
-		mv.addObject("errorDescripton", "the page you are looking for is not available now!");
+		mv.addObject("errorDescription", "the page you are looking for is not available now!");
 		mv.addObject("title", "404 Error Page");
 		return mv;
 	}
@@ -26,7 +26,7 @@ public class GlobalDefaultExceptionHandler {
 	public ModelAndView handlerProductNotFoundException(){
 		ModelAndView mv = new ModelAndView("error");
 		mv.addObject("errorTitle", "The product is not available ! ");
-		mv.addObject("errorDescripton", "the product you are looking for is not available right now!");
+		mv.addObject("errorDescription", "the product you are looking for is not available right now!");
 		mv.addObject("title", "Product Unavailable");
 		return mv;
 	}
@@ -39,7 +39,7 @@ public class GlobalDefaultExceptionHandler {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		ex.printStackTrace(pw);
-		mv.addObject("errorDescripton", sw.toString());
+		mv.addObject("errorDescription", sw.toString());
 		mv.addObject("title", "Error");
 		return mv;
 	}

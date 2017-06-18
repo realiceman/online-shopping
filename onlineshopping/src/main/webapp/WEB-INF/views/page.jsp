@@ -21,6 +21,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 
 <title>Online Shopping / ${title }</title>
 
@@ -35,6 +37,7 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="${css }/bootstrap.min.css" rel="stylesheet">
+
 
 <!-- Bootstrap theme -->
 <link href="${css }/bs_min_theme.css" rel="stylesheet">
@@ -103,13 +106,15 @@
 		<!-- /.container -->
 
 		<!-- jQuery -->
-		<script src="${js}/jquery.js"></script>
+	   <script src="${js}/jquery.js"></script> 
+	    
+    
 		
 		<!-- jQuery validator -->
 		<script src="${js}/jquery.validate.js"></script>
 
 		<!-- Bootstrap Core JavaScript -->
-		<script src="${js}/bootstrap.min.js"></script>
+		 <script src="${js}/bootstrap.min.js"></script> 
 		
 		<!-- datatable plugin -->
 		<script src="${js}/jquery.dataTables.js"></script>

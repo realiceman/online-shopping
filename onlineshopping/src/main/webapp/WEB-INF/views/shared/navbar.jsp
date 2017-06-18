@@ -37,7 +37,23 @@
                     <li id="login">
                         <a href="${contextRoot}/login"> Login</a>
                     </li>
+                  <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">${userModel.fullName} <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="${contextRoot}/cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
+                                     <span class="badge">${userModel.cart.cartLines}</span>
+                                      - &#8364; ${userModel.cart.grandTotal}
+                         </a>
+                    </li>
+                     <li class="divider" role="separator"></li>
+                     <li>
+                          <a href="${contextRoot}/logout">Logout</a>
+                     </li>
                 </ul>
+            </li>
+                
+                </ul>
+           
                 
             </div>
             <!-- /.navbar-collapse -->
