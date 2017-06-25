@@ -122,9 +122,9 @@
 			    </div>
 			    
 			    <div class="col-xs-12">
-			        <div style="overflow:auto">
-			        
-			        <table id="adminProductsTable" class="table table-striped table-bordered">
+			      <div class="container-fluid">
+			       <div class="table-responsive">
+			           <table id="adminProductsTable" class="table table-striped table-bordered">
 			            <thead>
 			               <tr>
 			                  <th>Id</th>
@@ -151,9 +151,13 @@
 			                  <th>Edit</th>
 			               </tr>
 			            </tfoot>
-			       </table>
+			           </table>
+			         </div>
+			       </div>
 			        
-			        </div>
+			       
+			        
+			        
 			    </div>
 			    
 			</div>

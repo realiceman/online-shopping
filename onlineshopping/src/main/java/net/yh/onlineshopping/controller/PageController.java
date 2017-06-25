@@ -1,7 +1,13 @@
 package net.yh.onlineshopping.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -128,12 +134,16 @@ public static  Logger logger = LogManager.getLogger(PageController.class);
 	
 	
 	@RequestMapping(value = "/login")
-	public ModelAndView login(@RequestParam(name="error", required=false) String error){
+	public ModelAndView login(@RequestParam(name="error", required=false) String error, 
+			@RequestParam(name="logout", required=false) String logout){
 		ModelAndView mv = new ModelAndView("login");
 		if(error!=null){
 			mv.addObject("message", "Invalid username/password");
 		}
-		mv.addObject("title", "Login");
+		if(logout!=null){
+			mv.addObject("logout", "You have been successfully logged out");
+		}
+		
 		return mv;
 	}
 	
@@ -145,6 +155,19 @@ public static  Logger logger = LogManager.getLogger(PageController.class);
 		mv.addObject("errorTitle", "Haha got you ;) ! ");
 		mv.addObject("errorDescription", "You are not authorized to view this page!");
 		return mv;
+	}
+	
+	
+	/* Logout */
+
+	@RequestMapping(value = "/perform-logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response){
+		//fetch authentication
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth!=null){
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return "redirect:/login?logout";
 	}
 
 }

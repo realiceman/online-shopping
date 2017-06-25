@@ -82,3 +82,6 @@ footer {
 	color:red;
 }
 
+.table-responsive{
+	overflow-x: inherit;
+}
