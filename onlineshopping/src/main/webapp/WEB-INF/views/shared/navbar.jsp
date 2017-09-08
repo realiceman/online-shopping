@@ -43,11 +43,11 @@
                     </security:authorize>
                     
                     <security:authorize access="isAuthenticated()">
-		                  <li class="dropdown">
+		                  <li class="dropdown" id="userCart">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="text">${userModel.fullName} <span class="caret"></span></a>
 		                <ul class="dropdown-menu" role="menu">
 		                  <security:authorize access="hasAuthority('USER')">
-			                    <li><a href="${contextRoot}/cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
+			                    <li><a href="${contextRoot}/cart/show"> <span class="glyphicon glyphicon-shopping-cart"></span>
 			                                     <span class="badge">${userModel.cart.cartLines}</span>
 			                                      - &#8364; ${userModel.cart.grandTotal}
 			                         </a>
