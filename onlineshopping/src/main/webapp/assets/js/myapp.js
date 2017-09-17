@@ -343,5 +343,35 @@ var $adminProductsTable = $('#adminProductsTable');
 	/***********END VALIDATION CODE FOR LOGINFORM   **********************/
 	
 	
+	
+	/***********HANDLING CLICK EVENT FOR REFRESH BUTTON IN CART   **********************/
+	
+	$('button[name="refreshCart"]').click(function(){
+	    //fetch carline id
+		var cartlineId = $(this).attr('value');
+		var countElement = $("#count_"+cartlineId);
+		
+		var originalCount = countElement.attr('value');
+		var currentCount = countElement.val();
+		//work only when count has changed
+		if(currentCount !== originalCount){
+			//console.log("currentcount="+currentCount);
+			//console.log("originalcount="+originalCount);
+			if(currentCount < 1 || currentCount > 3){
+				countElement.val(originalCount);
+				bootbox.alert({
+					size: 'medium',
+					title: 'Error',
+					message: 'Product count should be min 1 and max 3'
+				});
+			}else{
+				var updateUrl = window.contextRoot+ '/cart/'+cartlineId+'/update?count='+currentCount;
+				//forward it to controller
+				window.location.href = updateUrl;
+			}
+		}
+	});
+	
+	
 });
 

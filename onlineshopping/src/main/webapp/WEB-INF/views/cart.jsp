@@ -27,18 +27,18 @@
 										   <strong class="unavailable">(not available)</strong>
 										</c:if>
 										
-										<p>Brand - ${cartline.product.name}</p>
+										<p>Brand - ${cartline.product.brand}</p>
 										<p>Description - ${cartline.product.description}</p>
 									</div>
 								</div>
 							</td>
 							<td data-th="Price"> <p>Brand - ${cartline.buyingPrice}</p> euros </td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="${cartline.productCount}">
+								<input type="number" id="count_${cartline.id}" min="1" max="3" class="form-control text-center" value="${cartline.productCount}">
 							</td>
 							<td data-th="Subtotal" class="text-center">${cartline.total}euros</td>
 							<td class="actions" data-th="">
-								<button class="btn btn-info btn-sm"><span class="glyphicon glyphicon-refresh"></span></button>
+								<button type="button" name="refreshCart" value="${cartline.id}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-refresh"></span></button>
 								<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>								
 							</td>
 						</tr>
@@ -48,12 +48,12 @@
 					</tbody>
 					<tfoot>
 						<tr class="visible-xs">
-							<td class="text-center"><strong>Total ${userModel.cart.grandTotal} euros</strong></td>
+							<td class="text-center"><strong>Total ${userModel.cart.grandTotal} &#8364;</strong></td>
 						</tr>
 						<tr>
 							<td><a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total ${userModel.cart.grandTotal} euros</strong></td>
+							<td class="hidden-xs text-center"><strong>Total ${userModel.cart.grandTotal} &#8364;</strong></td>
 							<td><a href="#" class="btn btn-success btn-block">Checkout <span class="glyphicon glyphicon-chevron-right"></span></a></td>
 						</tr>
 					</tfoot>
