@@ -47,7 +47,7 @@
 							<td data-th="Subtotal" class="text-center">${cartline.total} &#8364;</td>
 							<td class="actions" data-th="">
 								<button type="button" name="refreshCart" value="${cartline.id}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-refresh"></span></button>
-								<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>								
+								<a href="${contextRoot}/cart/${cartline.id}/delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>								
 							</td>
 						</tr>
 					</c:forEach>
@@ -59,7 +59,7 @@
 							<td class="text-center"><strong>Total ${userModel.cart.grandTotal} &#8364;</strong></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Continue Shopping</a></td>
+							<td><a href="${contextRoot}/show/all/products" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total ${userModel.cart.grandTotal} &#8364;</strong></td>
 							<td><a href="#" class="btn btn-success btn-block">Checkout <span class="glyphicon glyphicon-chevron-right"></span></a></td>
